@@ -1,0 +1,7 @@
+.DS_Store
+xcuserdata
+*.hmap
+*.xcuserstate
+build/
+.idea
+node_modules/
