@@ -13,7 +13,7 @@ import {
   TabBarIOS
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import Header from './src/components/header1'
 export default class doubanMovie extends Component {
   static title = '<TabBarIOS>';
   static description = 'Tab-based navigation.';
@@ -41,8 +41,7 @@ export default class doubanMovie extends Component {
             });
           }}>
           <View>
-            <Text>第一张第一张第一张第一张第一张第一张第一张第一张第一张</Text>
-            <Text>第一张第一张第一张第一张第一张第一张第一张第一张第一张</Text>
+            <Header title={'正在热映'} />
           </View>
         </Icon.TabBarItem>
         <Icon.TabBarItem
@@ -58,10 +57,7 @@ export default class doubanMovie extends Component {
             });
           }}>
           <View>
-            <Text>22222222222222222</Text>
-            <Text>22222222222222222</Text>
-            <Text>22222222222222222</Text>
-            <Text>22222222222222222</Text>
+            <Header title={'top250'} />
           </View>
         </Icon.TabBarItem>
         <Icon.TabBarItem
@@ -75,10 +71,7 @@ export default class doubanMovie extends Component {
             });
           }}>
           <View>
-            <Text>333333333333</Text>
-            <Text>333333333333</Text>
-            <Text>333333333333</Text>
-            <Text>333333333333</Text>
+            <Header title={'新片速递'} />
           </View>
         </Icon.TabBarItem>
       </TabBarIOS>
