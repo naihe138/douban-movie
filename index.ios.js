@@ -52,7 +52,6 @@ export default class doubanMovie extends Component {
           iconName="database"
           selectedIconName="database"
           title="排行"
-          badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
           badgeColor="black"
           selected={this.state.selectedTab === 'top'}
           onPress={() => {
