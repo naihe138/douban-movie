@@ -4,68 +4,100 @@
  * @date 2017/4/6
  */
 import React, {Component, PropTypes} from 'react';
-import {Navigator, StyleSheet, View, Text, Dimensions, Button, Image} from 'react-native';
+import {Navigator, StyleSheet, View, Text, Dimensions, TouchableHighlight, Image, Button} from 'react-native';
 import serverApi from '../../config/serviceApi';
 const { height, width } = Dimensions.get('window');
 
 class List extends Component{
   constructor(props) {
     super(props);
-    this.states = {
-      a: '213'
-    }
   }
 
-  componentDidMount() {
-    console.log(this.props)
-    console.log(this.props.listData);
+
+  toDetail (id) {
+    console.log(id)
+  }
+
+  toAtor (arr) {
+    let str = '';
+    arr.forEach((item, index) => {
+      let name = '';
+      if (index !== (arr.length-1)) {
+        name = item.name + '/'
+      } else {
+        name = item.name
+      }
+      str += name;
+    })
+    return str;
   }
 
   render () {
-
-    /*
     return (
-      <View>
-        {this.props.listData.map((item, index) => {
-          return (
-            <View style={styles.listBox}>
-              <Image source={require('../../imgs/cat.png')} style={styles.thumb} />
+      <TouchableHighlight>
+        <View style={styles.listBox}>
+          <View style={styles.box}>
+            <Image source={{uri: this.props.rowData.images.small}} style={styles.thumb} />
+            <View style={styles.textBox}>
+              <Text style={styles.title}>{this.props.rowData.title}</Text>
+              <Text style={styles.director}>评分：{this.props.rowData.rating.average}</Text>
+              <Text style={styles.director}>导演：{this.props.rowData.directors[0].name}</Text>
+              <Text style={styles.director}>主演：{this.toAtor(this.props.rowData.casts)}</Text>
             </View>
-            <Text key={index}>{item}</Text>
-          )
-        })}
-      </View>
-    )
-    */
-    return (
-      <View style={styles.listBox}>
-        <Image source={require('../../imgs/cat.png')} style={styles.thumb} />
-        <View style={styles.textBox}>
-          <Text style={styles.title}>为什么猫都叫不来</Text>
-          <Text style={styles.director}>导演：山本头</Text>
-          <Text style={styles.actor}>演员：山本头、山本头、山本头、山本头、山本头、山本头、山本头、山本头、山本头、山本头、</Text>
+            <Text style={styles.detialBtn}>详情</Text>
+          </View>
         </View>
-      </View>
+      </TouchableHighlight>
     )
   }
 };
 
 const styles = StyleSheet.create({
   listBox: {
-    padding: 10,
-    flex: 1,
-    width: width,
-    backgroundColor: 'green'
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    width: width
+  },
+  box: {
+    paddingBottom: 10,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#d8d8d8',
+    position: 'relative'
   },
   thumb: {
     width: width*0.194,
-    height: (width*0.194)/0.71,
-    alignSelf: 'flex-start'
+    height: (width*0.194)/0.71
   },
   textBox: {
-    width: width*0.5,
-    alignSelf: 'flex-end',
-    backgroundColor: 'red'
+    width: width*0.73,
+  },
+  detialBtn: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    width: 50,
+    height: 30,
+    borderWidth: 1,
+    borderColor: '#d8d8d8',
+    borderRadius: 4,
+    fontSize: 12,
+    textAlign: 'center',
+    lineHeight: 28,
+    color: '#67ba62'
+  },
+  title: {
+    color: '#494949',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingBottom: 8
+  },
+  director: {
+    color: '#9b9b9b',
+    fontSize: 12,
+    lineHeight: 16
   }
 });
 export default List;
